@@ -19,10 +19,26 @@ class NotificationManager {
         center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
             if granted {
                 print("Notification permission granted.")
+                self.setupNotificationCategories()
             } else {
                 print("Notification permission denied.")
             }
         }
+    }
+    
+    /// Setup notification categories for better appearance
+    private func setupNotificationCategories() {
+        let center = UNUserNotificationCenter.current()
+        
+        // Create birthday reminder category
+        let birthdayCategory = UNNotificationCategory(
+            identifier: "BIRTHDAY_REMINDER",
+            actions: [],
+            intentIdentifiers: [],
+            options: [.customDismissAction]
+        )
+        
+        center.setNotificationCategories([birthdayCategory])
     }
     
     /// Schedule a daily notification for today's birthdays.
@@ -40,6 +56,9 @@ class NotificationManager {
         content.body = "Wish a happy birthday to: \(names)"
         content.sound = .default
         content.badge = NSNumber(value: todayBirthdays.count)
+        
+        // Set category identifier for custom notification appearance
+        content.categoryIdentifier = "BIRTHDAY_REMINDER"
         
         var dateComponents = DateComponents()
         dateComponents.hour = 9  // Notify at 9:00 AM
@@ -71,6 +90,9 @@ class NotificationManager {
                 content.title = "Birthday Check 🎂"
                 content.body = "Check today's birthdays and send your wishes!"
                 content.sound = .default
+                
+                // Set category identifier for custom notification appearance
+                content.categoryIdentifier = "BIRTHDAY_REMINDER"
                 
                 var dateComponents = DateComponents()
                 dateComponents.hour = 9
