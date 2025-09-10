@@ -49,3 +49,4 @@ The GitHub Actions workflow (`.github/workflows/deploy.yml`) will automatically 
 - Verify DNS records are correct
 - Ensure CNAME file contains `www.giftsmartapp.com`
 - Check GitHub Actions tab for deployment status
+

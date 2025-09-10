@@ -172,14 +172,14 @@ struct GiftOptionsView: View {
                     print("🎁 GiftOptionsView: View loaded, showing content")
                 }
             }
-            .onChange(of: isViewLoaded) { newValue in
+            .onChange(of: isViewLoaded) { _, newValue in
                 print("🎁 GiftOptionsView: isViewLoaded changed to: \(newValue)")
             }
-            .onChange(of: selectedCategory) { newValue in
+            .onChange(of: selectedCategory) { _, newValue in
                 print("🎁 GiftOptionsView: selectedCategory changed to: \(newValue)")
                 print("🎁 GiftOptionsView: Filtered gifts count: \(filteredGiftOptions.count)")
             }
-            .onChange(of: showingSafari) { newValue in
+            .onChange(of: showingSafari) { _, newValue in
                 print("🎁 GiftOptionsView: showingSafari changed to: \(newValue)")
                 if newValue {
                     print("🎁 GiftOptionsView: Safari sheet is being presented")
@@ -188,7 +188,7 @@ struct GiftOptionsView: View {
                     print("🎁 GiftOptionsView: Safari sheet is being dismissed")
                 }
             }
-            .onChange(of: safariURL) { newValue in
+            .onChange(of: safariURL) { _, newValue in
                 print("🎁 GiftOptionsView: safariURL changed to: \(newValue?.absoluteString ?? "nil")")
             }
             .sheet(isPresented: $showingSafari) {
