@@ -334,6 +334,11 @@ p {
         padding: 14px 24px;
     }
     
+    .btn img {
+        height: 50px !important;
+        width: auto !important;
+    }
+    
     .features-preview {
         padding: 2rem 0;
     }
